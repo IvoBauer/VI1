@@ -1,0 +1,41 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#map {
+}
+
+.waypoint-marker {
+    background-color: #ff0000; /* Barva pozadí znaèky */
+    width: 20px; /* Šíøka znaèky */
+    height: 20px; /* Výška znaèky */
+    border-radius: 50%; /* Zaoblené rohy */
+    display: flex; /* Flexibilní layout */
+    justify-content: center; /* Zarovnání obsahu na støed vodorovnì */
+    align-items: center; /* Zarovnání obsahu na støed svisle */
+    color: #ffffff; /* Barva textu v znaèce */
+    font-weight: bold; /* Tuèné písmo */
+}
+
+.marker-label {
+    font-size: 12px; /* Velikost písma v znaèce */
+}
