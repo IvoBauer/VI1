@@ -35,13 +35,13 @@ namespace VI1_TSP.Controllers
             {                                
                 List<Location> routeCandidate = new List<Location>();
                 
-                routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.01, 500, edges);
-                if (GetRouteDistance(routeCandidate,edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                //routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.01, 500, edges);
+                //if (GetRouteDistance(routeCandidate,edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
                 routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.01, 1500, edges);
                 if (GetRouteDistance(routeCandidate, edges) < bestDistance)
@@ -52,55 +52,55 @@ namespace VI1_TSP.Controllers
                 }
 
                 //--------------------------------------------------------------------------------------------
-                routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.05, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                //routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.05, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
-                routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.05, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                //routeCandidate = GeneticAlgorithmSolver(locations, 100, 20, 0.05, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
-                //--------------------------------------------------------------------------------------------
-                routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.01, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                ////--------------------------------------------------------------------------------------------
+                //routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.01, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
-                routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.1, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                //routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.1, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
-                //--------------------------------------------------------------------------------------------
-                routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.05, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                ////--------------------------------------------------------------------------------------------
+                //routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.05, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
-                routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.5, 1500, edges);
-                if (GetRouteDistance(routeCandidate, edges) < bestDistance)
-                {
-                    bestRoute = routeCandidate;
-                    bestDistance = GetRouteDistance(routeCandidate, edges);
-                    Console.WriteLine(bestDistance);
-                }
+                //routeCandidate = GeneticAlgorithmSolver(locations, 200, 20, 0.5, 1500, edges);
+                //if (GetRouteDistance(routeCandidate, edges) < bestDistance)
+                //{
+                //    bestRoute = routeCandidate;
+                //    bestDistance = GetRouteDistance(routeCandidate, edges);
+                //    Console.WriteLine(bestDistance);
+                //}
 
 
 
@@ -257,7 +257,7 @@ namespace VI1_TSP.Controllers
             int geneA = random.Next(parent.Count);
             int geneB = random.Next(parent.Count);
             genes[0] = Math.Min(geneA, geneB);
-            genes[1] = Math.Min(geneA, geneB);
+            genes[1] = Math.Max(geneA, geneB);
 
             return genes;
         }
@@ -291,14 +291,15 @@ namespace VI1_TSP.Controllers
         {
             List<List<Location>> children = new List<List<Location>>();
 
-            //Náhodné zamíchání matingPool do randomizedPool
-            List<List<Location>> randomizedPool = matingPool.OrderBy(x => Guid.NewGuid()).ToList();
 
             //Přidání elitních jedinců do další generace
             for (int i = 0; i < eliteSize; i++)
             {
                 children.Add(matingPool[i]);
             }
+
+            //Náhodné zamíchání matingPool do randomizedPool
+            List<List<Location>> randomizedPool = matingPool.OrderBy(x => Guid.NewGuid()).ToList();
 
             //Upravení zbytku jedinců do další generace
             int length = matingPool.Count - eliteSize;
